@@ -85,6 +85,11 @@ func (p *packageCollection) collectPackagesForCategory(category string) error {
 		}
 
 		for _, pkg := range pkgs {
+			if len(pkg.Errors) > 0 {
+				log.Printf("loading package %q had errors: %v", pkg.PkgPath, pkg.Errors)
+				continue
+			}
+
 			if packageFilter.Match(category + "/" + pkg.Name) {
 				continue
 			}
