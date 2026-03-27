@@ -75,10 +75,11 @@ func (p *packageCollection) collectPackagesForCategory(category string) error {
 
 		var fset token.FileSet
 		config := &packages.Config{
+			Dir:  path,
 			Fset: &fset,
 			Mode: packages.NeedName | packages.NeedFiles | packages.NeedSyntax,
 		}
-		pkgs, err := packages.Load(config, path)
+		pkgs, err := packages.Load(config, ".")
 		if err != nil {
 			log.Printf("parsing directory %q failed: %v", path, err)
 			continue
