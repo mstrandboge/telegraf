@@ -5,7 +5,6 @@ import (
 	"errors"
 	"fmt"
 	"go/ast"
-	"go/parser"
 	"go/token"
 	"log"
 	"os"
